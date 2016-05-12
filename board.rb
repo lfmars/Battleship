@@ -1,9 +1,9 @@
-#module Battle
 class MainBoard
-  attr_accessor :size
+  attr_accessor :size, :ships_class
 
-    def initialize(get_size)
+    def initialize(get_size, ships_class)
       @size = get_size
+      @ships_class = ships_class
     end
 
     def board_element
@@ -31,7 +31,7 @@ class MainBoard
     def ship_line(lineNumber)
       x='A'.ord + lineNumber
       print " #{x.chr}"
-        @size.times do print board_element[rand(4)+1] end
+        @size.times do |row| print board_element[ships_class.set_ship[lineNumber][row]] end
       puts '|'
     end
 
@@ -45,5 +45,3 @@ class MainBoard
     end
 
 end
-
-#MainBoard.new(5).draw_board

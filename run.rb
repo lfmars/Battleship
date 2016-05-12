@@ -1,3 +1,5 @@
 require './game'
+
 puts "Kokio dydzio lentoj kariausim?"
-MainBoard.new(gets.to_i).draw_board
+size = gets.to_i
+MainBoard.new(size, Shipyard.new(size)).draw_board
