@@ -1,14 +1,18 @@
-class MainBoard
-  attr_accessor :size, :ships_class
+#require './ships'
 
-    def initialize(get_size, ships_class)
-      @size = get_size
-      @ships_class = ships_class
+class MainBoard
+  attr_accessor :size, :board_info
+
+    def initialize
+      @size = 4
+      @board_info = Shipyard.new().see
     end
+
 
     def board_element
       ["----", "|   ", "| X ", "|<=>", "| * "]
     end
+
 
     def first_line
       print "  |"
@@ -28,10 +32,11 @@ class MainBoard
       puts
     end
 
+
     def ship_line(lineNumber)
       x='A'.ord + lineNumber
       print " #{x.chr}"
-        @size.times do |row| print board_element[ships_class.set_ship[lineNumber][row]] end
+        @size.times do |row| print board_element[board_info[lineNumber][row]] end
       puts '|'
     end
 

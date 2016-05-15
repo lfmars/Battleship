@@ -1,18 +1,21 @@
+#require './shipkoo'
+
+
 class Shipyard
-  attr_accessor :see_size
+  attr_accessor :see_size, :test
 
-  def initialize(see_size)
-    @see_size = see_size
+  def initialize
+    @see_size = 4#MainBoard.new().size
   end
 
-  def see_array
-    Array.new(@see_size) {Array.new(@see_size,1)}
+  def empty_see_array
+    Array.new(see_size) {Array.new(see_size,1)}
   end
 
-  def set_ship
-    see = see_array
-    see[1][2]=3
-    return see
+  def see
+    see_array = empty_see_array
+    2.times do see_array[Shipkoo.new().leng][Shipkoo.new().wid] = 3  end
+    see_array
   end
 
 end
